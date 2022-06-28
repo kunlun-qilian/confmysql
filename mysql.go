@@ -81,3 +81,10 @@ func (c *MySQL) Init() {
 func (c *MySQL) Commands() []*cobra.Command {
 	return c.commands
 }
+
+func (c *MySQL) DB() *gorm.DB {
+	if c.db == nil {
+		panic("get db before init")
+	}
+	return c.db
+}
