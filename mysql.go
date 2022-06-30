@@ -71,7 +71,7 @@ func (c *MySQL) Init() {
 					OutPath: c.AutoMigrateConfig.QueryPath,
 				})
 				g.UseDB(c.db)
-				g.ApplyBasic(c.AutoMigrateConfig.Models)
+				g.ApplyBasic(c.AutoMigrateConfig.Models...)
 				g.Execute()
 			},
 		})
