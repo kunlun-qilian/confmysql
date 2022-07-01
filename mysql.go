@@ -28,7 +28,9 @@ type MySQL struct {
 
 func (c *MySQL) Init() {
 
-	conf := &gorm.Config{}
+	conf := &gorm.Config{
+		DisableForeignKeyConstraintWhenMigrating: true,
+	}
 	conf.NamingStrategy = schema.NamingStrategy{
 		TablePrefix:   "t_",
 		SingularTable: true,
