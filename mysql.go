@@ -5,6 +5,7 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gen"
 	"gorm.io/gorm"
+	"gorm.io/gorm/schema"
 )
 
 type AutoMigrateConfig struct {
@@ -31,6 +32,11 @@ func (c *MySQL) Init() {
 	conf := &gorm.Config{}
 	if c.Config != nil {
 		conf = c.Config
+	} else {
+		conf.NamingStrategy = schema.NamingStrategy{
+			TablePrefix:   "t_",
+			SingularTable: true,
+		}
 	}
 
 	db, err := gorm.Open(mysql.Open(c.DSN), conf)
