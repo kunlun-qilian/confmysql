@@ -45,7 +45,7 @@ func (c *MySQL) Init() {
 		c.commands = append(c.commands, &cobra.Command{
 			Use: "migrate",
 			Run: func(cmd *cobra.Command, args []string) {
-				if err := c.db.AutoMigrate(c.AutoMigrateConfig.Models); err != nil {
+				if err := c.db.AutoMigrate(c.AutoMigrateConfig.Models...); err != nil {
 					panic(err)
 				}
 			},
