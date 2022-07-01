@@ -19,7 +19,6 @@ type AutoMigrateConfig struct {
 
 type MySQL struct {
 	DSN               string `env:""`
-	Config            *gorm.Config
 	AutoMigrateConfig *AutoMigrateConfig
 
 	db *gorm.DB
@@ -30,13 +29,9 @@ type MySQL struct {
 func (c *MySQL) Init() {
 
 	conf := &gorm.Config{}
-	if c.Config != nil {
-		conf = c.Config
-	} else {
-		conf.NamingStrategy = schema.NamingStrategy{
-			TablePrefix:   "t_",
-			SingularTable: true,
-		}
+	conf.NamingStrategy = schema.NamingStrategy{
+		TablePrefix:   "t_",
+		SingularTable: true,
 	}
 
 	db, err := gorm.Open(mysql.Open(c.DSN), conf)
