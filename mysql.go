@@ -47,9 +47,6 @@ func (m *MySQL) SetDefaults() {
 		values.Set("loc", "Local")
 		m.Extra = values.Encode()
 	}
-
-	m.Database = sqlx.NewDatabase(m.DBName)
-
 }
 
 func (m *MySQL) URL() string {
