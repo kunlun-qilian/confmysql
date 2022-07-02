@@ -58,6 +58,7 @@ func (m *MySQL) URL() string {
 }
 
 func (m *MySQL) Connect() error {
+	m.Database.Name = m.DBName
 	m.SetDefaults()
 	db := m.Database.OpenDB(&mysqlconnector.MysqlConnector{
 		Host:  m.URL(),

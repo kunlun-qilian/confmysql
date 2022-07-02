@@ -7,7 +7,6 @@ import (
 )
 
 func TestMySQL_Connect(t *testing.T) {
-	tests.DB.Name = "example"
 	m := &MySQL{
 		Host:     "127.0.0.1",
 		User:     "root",
