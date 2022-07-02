@@ -3,23 +3,19 @@ module github.com/kunlun-qilian/confmysql
 go 1.17
 
 require (
-	github.com/spf13/cobra v1.5.0
-	gorm.io/driver/mysql v1.3.4
-	gorm.io/gen v0.3.8
-	gorm.io/gorm v1.23.6
+	github.com/go-courier/envconf v1.4.0
+	github.com/go-courier/sqlx/v2 v2.23.11
 )
 
 require (
+	github.com/go-courier/enumeration v1.3.1 // indirect
+	github.com/go-courier/logr v0.0.2 // indirect
+	github.com/go-courier/x v0.0.10 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
-	github.com/inconshreveable/mousetrap v1.0.0 // indirect
-	github.com/jinzhu/inflection v1.0.0 // indirect
-	github.com/jinzhu/now v1.1.5 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3 // indirect
+	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2 // indirect
 	golang.org/x/sys v0.0.0-20220222200937-f2425489ef4c // indirect
 	golang.org/x/tools v0.1.10 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
-	gorm.io/datatypes v1.0.7-0.20220608135749-9359a769c0b6 // indirect
-	gorm.io/hints v1.1.0 // indirect
-	gorm.io/plugin/dbresolver v1.2.1 // indirect
 )
