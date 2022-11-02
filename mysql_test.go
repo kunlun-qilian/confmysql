@@ -2,7 +2,7 @@ package confmysql
 
 import (
 	"github.com/go-courier/sqlx/v2/migration"
-	"github.com/kunlun-qilian/confmysql/v1/tests"
+	"github.com/kunlun-qilian/confmysql/v2/tests"
 	"testing"
 )
 

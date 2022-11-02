@@ -3,11 +3,14 @@ package confmysql
 import (
 	"fmt"
 	"github.com/go-courier/sqlx/v2"
+	"github.com/go-courier/sqlx/v2/migration"
 	"net/url"
 	"time"
 
 	"github.com/go-courier/envconf"
 	"github.com/go-courier/sqlx/v2/mysqlconnector"
+
+	"github.com/spf13/cobra"
 )
 
 type MySQL struct {
@@ -23,6 +26,8 @@ type MySQL struct {
 	Retry
 	Database *sqlx.Database `env:"-"`
 	*sqlx.DB `env:"-"`
+
+	commands []*cobra.Command
 }
 
 func (m *MySQL) SetDefaults() {
@@ -72,6 +77,17 @@ func (m *MySQL) Connect() error {
 }
 
 func (m *MySQL) Init() {
+
+	// migrate
+	m.commands = append(m.commands, &cobra.Command{
+		Use: "migrate",
+		Run: func(cmd *cobra.Command, args []string) {
+			if err := migration.Migrate(m.DB, nil); err != nil {
+				panic(err)
+			}
+		},
+	})
+
 	if m.DB == nil {
 		m.Do(m.Connect)
 	}
@@ -82,4 +98,8 @@ func (m *MySQL) Get() *sqlx.DB {
 		panic(fmt.Errorf("get db before init"))
 	}
 	return m.DB
+}
+
+func (m *MySQL) Commands() []*cobra.Command {
+	return m.commands
 }
