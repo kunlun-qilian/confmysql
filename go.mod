@@ -1,4 +1,4 @@
-module github.com/kunlun-qilian/confmysql
+module github.com/kunlun-qilian/confmysql/v1
 
 go 1.17
 
